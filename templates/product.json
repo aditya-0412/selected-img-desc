@@ -45,8 +45,8 @@
             "show_gift_card_recipient": true
           }
         },
-        "variant_description_CXBkzM": {
-          "type": "variant_description",
+        "variant_description_6Feqmj": {
+          "type": "variant-description",
           "settings": {}
         },
         "description": {
@@ -67,7 +67,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "variant_description_CXBkzM",
+        "variant_description_6Feqmj",
         "description",
         "share"
       ],
