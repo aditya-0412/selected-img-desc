@@ -161,6 +161,15 @@ if (!customElements.get('product-info')) {
         }
       }
 
+      // Custom Code: Variant based description update
+      updateVariantDescription(html) {
+        const oldElement = this.querySelector('#variant-desc');
+        const newElement = html.querySelector('#variant-desc');
+        if(oldElement && newElement) { 
+          HTMLUpdateUtility.viewTransition(oldElement, newElement)
+        };
+      }
+
       handleUpdateProductInfo(productUrl) {
         return (html) => {
           const variant = this.getSelectedVariant(html);
