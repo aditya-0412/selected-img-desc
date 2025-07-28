@@ -663,11 +663,12 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
-               {%-  when 'variant-description'  %}
+
                 {% comment %} Variant based description show {% endcomment %}
-                  <div id="variant-desc">
-                    <p>{{ product.selected_or_first_available_variant.metafields.custom.variant_description }}</p>
-                  </div>
+              {%- when 'variant-description' %}
+                <div id="variant-desc">
+                  <p>{{ product.selected_or_first_available_variant.metafields.custom.variant_description }}</p>
+                </div>
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
