@@ -1,0 +1,77 @@
+<section class="custom-template-wrapper" style="padding: 40px;">
+  {% if section.settings.banner_image != blank %}
+    <div class="banner">
+      <img
+        src="{{ section.settings.banner_image | image_url: width: 1600 }}"
+        alt="Banner"
+        width="100%"
+        height="auto"
+      >
+    </div>
+  {% endif %}
+
+  <div class="text-center" style="margin: 40px 0;">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.description }}</p>
+  </div>
+
+  {% assign collection = section.settings.collection %}
+  {% if collection != blank and collections[collection] %}
+    <div
+      class="product-grid"
+      style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;"
+    >
+      {% for product in collections[collection].products %}
+        <div class="product-card" style="border: 1px solid #e5e5e5; padding: 16px;">
+          <a href="{{ product.url }}">
+            <img
+              src="{{ product.featured_image | image_url: width: 400 }}"
+              alt="{{ product.title }}"
+              width="100%"
+              height="auto"
+            >
+            <h3 style="margin-top: 10px;">{{ product.title }}</h3>
+            <p>{{ product.price | money }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No collection selected or it's empty.</p>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Custom Template Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Featured Products"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Explore our latest offerings below."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Choose Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Template Section"
+    }
+  ]
+}
+{% endschema %}
