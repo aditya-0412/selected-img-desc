@@ -664,11 +664,12 @@
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
 
-                {% comment %} Variant based description show {% endcomment %}
+                {% comment %} Custom Code Start: Variant based description show {% endcomment %}
               {%- when 'variant-description' %}
                 <div id="variant-desc">
                   <p>{{ product.selected_or_first_available_variant.metafields.custom.variant_description }}</p>
                 </div>
+                {% comment %} Custom Code Start: Variant based description show {% endcomment %}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
